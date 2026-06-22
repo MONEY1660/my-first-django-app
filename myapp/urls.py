@@ -16,7 +16,21 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from django.http import HttpResponse
+
+def home(request):
+    return HttpResponse("""
+    <html>
+        <head><title>Django on Vercel</title></head>
+        <body>
+            <h1>✅ Django is running on Vercel!</h1>
+            <p>Your Django application has been successfully deployed.</p>
+            <a href="/admin/">Go to Admin</a>
+        </body>
+    </html>
+    """)
 
 urlpatterns = [
+    path('', home, name='home'),
     path('admin/', admin.site.urls),
 ]
